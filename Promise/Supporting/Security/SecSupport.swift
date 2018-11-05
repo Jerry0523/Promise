@@ -28,6 +28,7 @@ public func SecItemCopyMatching(_ query: SecDictionaryType) -> Promise<AnyObject
         let status = SecItemCopyMatching(query as CFDictionary, result)
         if status == noErr {
             resolve(result.pointee)
+            result.deallocate()
         } else {
             reject(error(forOSStatus: status))
         }
@@ -40,6 +41,7 @@ public func SecItemAdd(_ attributes: SecDictionaryType) -> Promise<AnyObject?> {
         let status = SecItemAdd(attributes as CFDictionary, result)
         if status == noErr {
             resolve(result.pointee)
+            result.deallocate()
         } else {
             reject(error(forOSStatus: status))
         }
