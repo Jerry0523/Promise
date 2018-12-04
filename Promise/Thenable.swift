@@ -14,7 +14,7 @@ public protocol AnyThenable {
     
     func reject(_ reason: Error)
     
-    func connect(next: AnyThenable)
+    func connect(toNext: AnyThenable)
     
 }
 

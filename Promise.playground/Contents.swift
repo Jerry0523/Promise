@@ -35,9 +35,9 @@ func parse(_ input: (data: Data?, response: URLResponse?)) -> Promise<[String: A
 do {
     let promise = Promise<Int>()
     promise
-        .then({ (1...$0).reduce(into: "", { $0 += "\($1)," }) })
-        .then({ Promise.post($0.components(separatedBy: ",").dropLast(), delayed: 1000) })
-        .then({ join("promise chaining ", $0, "\(Thread.isMainThread ? " in the main queue" : " in the global queue")") })
+        .then{ (1...$0).reduce(into: "", { $0 += "\($1)," }) }
+        .then{ Promise.post($0.components(separatedBy: ",").dropLast(), delayed: 1000) }
+        .then{ join("promise chaining ", $0, "\(Thread.isMainThread ? " in the main queue" : " in the global queue")") }
         .then(mlog)
         .detach(DispatchQueue.global())
     promise.resolve(3)
@@ -51,9 +51,9 @@ do {
     Promise<[Int]>
         .all([promise0, promise1, promise2])
         .detach(DispatchQueue.global())
-        .then({ join("promise all ", $0, "\(Thread.isMainThread ? " in the main queue" : " in the global queue")") })
+        .then{ join("promise all ", $0, "\(Thread.isMainThread ? " in the main queue" : " in the global queue")") }
         .then(mlog)
-        .catch({ print($0) })
+        .catch{ print($0) }
     
     promise1.resolve(1)
 }
@@ -64,9 +64,9 @@ do {
     
     Promise<Int>
         .race([promise0, promise1])
-        .then({ join("promise race ", $0) })
+        .then{ join("promise race ", $0) }
         .then(mlog)
-        .catch({ print($0) })
+        .catch{ print($0) }
 }
 
 do {
@@ -82,5 +82,5 @@ do {
 do {
     Promise
         .post((), delayed: 5000)
-        .then({ _ in PlaygroundPage.current.finishExecution() })
+        .then{ _ in PlaygroundPage.current.finishExecution() }
 }

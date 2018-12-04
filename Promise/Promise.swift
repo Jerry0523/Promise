@@ -11,9 +11,7 @@ import Foundation
 public final class Promise<T> {
     
     public init(work: (( (@escaping (T) -> ()), @escaping RejectHandler) -> Void)? = nil) {
-        if let work = work {
-            work(self.resolve, self.reject)
-        }
+        work?(self.resolve, self.reject)
     }
     
     public private(set) var state = State.pending {
@@ -23,12 +21,22 @@ public final class Promise<T> {
     }
     
     @discardableResult
-    public func then<O>(_ onResolved: @escaping (T) throws -> O, _ onRejected: RejectHandler? = nil) -> Promise<O> {
+    public func then<O>(_ onResolved: @escaping (T) throws -> O) -> Promise<O> {
+        return _then(onResolved, nil)
+    }
+    
+    @discardableResult
+    public func then<O>(_ onResolved: @escaping (T) throws -> O, _ onRejected: @escaping RejectHandler) -> Promise<O> {
         return _then(onResolved, onRejected)
     }
     
     @discardableResult
-    public func then<O>(_ onResolved: @escaping (T) throws -> Promise<O>, _ onRejected: RejectHandler? = nil) -> Promise<O> {
+    public func then<O>(_ onResolved: @escaping (T) throws -> Promise<O>) -> Promise<O> {
+        return _then(onResolved, nil)
+    }
+    
+    @discardableResult
+    public func then<O>(_ onResolved: @escaping (T) throws -> Promise<O>, _ onRejected: @escaping RejectHandler) -> Promise<O> {
         return _then(onResolved, onRejected)
     }
     
@@ -84,7 +92,7 @@ extension Promise : Thenable {
 
     public typealias DataType = T
     
-    public func connect(next: AnyThenable) {
+    public func connect(toNext next: AnyThenable) {
         ioQueue.async {
             self.fulfilledHandlers.append({ (val) in
                 next.resolve(val)
@@ -159,7 +167,7 @@ extension Promise {
             } else if let mappedSelf = mappedData as? Promise, mappedSelf === self {
                 throw InternalError.invalidOutput(reason: "resolved value refer to promise itself")
             } else if let mappedThenable = mappedData as? AnyThenable {
-                mappedThenable.connect(next: next)
+                mappedThenable.connect(toNext: next)
             } else {
                 throw InternalError.invalidOutput(reason: "unknown resolved value type \(mappedData)")
             }
