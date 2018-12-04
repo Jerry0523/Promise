@@ -10,6 +10,18 @@ import Foundation
 
 public final class Promise<T> {
     
+    public static var defaultOperationQueue: DispatchQueue {
+        get {
+            return mDefaultOperationQueue
+        }
+        
+        set {
+            ioQueue.async {
+                mDefaultOperationQueue = newValue
+            }
+        }
+    }
+    
     public init(work: (( (@escaping (T) -> ()), @escaping RejectHandler) -> Void)? = nil) {
         work?(self.resolve, self.reject)
     }
@@ -112,14 +124,14 @@ extension Promise {
             switch self.state {
             case .resolved(let value):
                 self.fulfilledHandlers.forEach({ (resolver) in
-                    (self.operationQueue ?? defaultOperationQueue).sync {
+                    (self.operationQueue ?? mDefaultOperationQueue).sync {
                         resolver(value)
                     }
                 })
                 self.fulfilledHandlers.removeAll()
             case .rejected(let reason):
                 self.rejectedHandlers.forEach({ (rejector) in
-                    (self.operationQueue ?? defaultOperationQueue).sync {
+                    (self.operationQueue ?? mDefaultOperationQueue).sync {
                         rejector(reason)
                     }
                 })
@@ -180,4 +192,4 @@ extension Promise {
 
 internal let ioQueue = DispatchQueue(label: "com.jerry.promise")
 
-internal let defaultOperationQueue = DispatchQueue.main
+internal var mDefaultOperationQueue = DispatchQueue.main
