@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:PromiseDemo/PromiseDemo.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Promise.playground">
    </FileRef>
    <FileRef

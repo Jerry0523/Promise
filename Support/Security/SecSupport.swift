@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Promise
 import Security
 
 public typealias SecDictionaryType = [String: Any]

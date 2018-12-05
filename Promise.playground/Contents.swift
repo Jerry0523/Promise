@@ -1,4 +1,5 @@
 import Promise
+import PromiseSupport
 import Foundation
 import PlaygroundSupport
 
