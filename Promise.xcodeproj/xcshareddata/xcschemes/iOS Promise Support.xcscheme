@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C44831F621B7AD6E00FFD71C"
-               BuildableName = "iOS_Promise_Support.framework"
+               BuildableName = "PromiseSupport.framework"
                BlueprintName = "iOS Promise Support"
                ReferencedContainer = "container:Promise.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C44831F621B7AD6E00FFD71C"
-            BuildableName = "iOS_Promise_Support.framework"
+            BuildableName = "PromiseSupport.framework"
             BlueprintName = "iOS Promise Support"
             ReferencedContainer = "container:Promise.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C44831F621B7AD6E00FFD71C"
-            BuildableName = "iOS_Promise_Support.framework"
+            BuildableName = "PromiseSupport.framework"
             BlueprintName = "iOS Promise Support"
             ReferencedContainer = "container:Promise.xcodeproj">
          </BuildableReference>

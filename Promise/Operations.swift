@@ -8,20 +8,7 @@
 
 import Foundation
 
-public struct Box {
-    
-    public let value: Any
-    
-    public init(_ val: Any) {
-        value = val
-    }
-}
-
 extension Promise {
-    
-    public func asBox() -> Promise<Box> {
-        return then({ Box($0) })
-    }
     
     public static func race<T>(_ inputs: [Promise<T>]) -> Promise<T> {
         let ret = Promise<T>()
