@@ -69,7 +69,7 @@ extension Array where Element == Box {
     }
     
     public func unpack5<A, B, C, D, E>() throws -> (A, B, C, D, E) {
-        if self.count != 3 {
+        if self.count != 5 {
             throw InternalError.invalidInput(reason: "invalid item count")
         }
         let a: A? = self[0].fetch()
