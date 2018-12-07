@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C454321E2142709D002BF607"
                BuildableName = "Promise.framework"
-               BlueprintName = "iOS Promise"
+               BlueprintName = "iOS Framework"
                ReferencedContainer = "container:Promise.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C454321E2142709D002BF607"
             BuildableName = "Promise.framework"
-            BlueprintName = "iOS Promise"
+            BlueprintName = "iOS Framework"
             ReferencedContainer = "container:Promise.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,7 +66,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C454321E2142709D002BF607"
             BuildableName = "Promise.framework"
-            BlueprintName = "iOS Promise"
+            BlueprintName = "iOS Framework"
             ReferencedContainer = "container:Promise.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,7 +84,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C454321E2142709D002BF607"
             BuildableName = "Promise.framework"
-            BlueprintName = "iOS Promise"
+            BlueprintName = "iOS Framework"
             ReferencedContainer = "container:Promise.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

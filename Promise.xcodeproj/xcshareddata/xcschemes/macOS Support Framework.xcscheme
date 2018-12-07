@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C44831F621B7AD6E00FFD71C"
+               BlueprintIdentifier = "C448320721B7B3F900FFD71C"
                BuildableName = "PromiseSupport.framework"
-               BlueprintName = "iOS Promise Support"
+               BlueprintName = "macOS Support Framework"
                ReferencedContainer = "container:Promise.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C44831F621B7AD6E00FFD71C"
+            BlueprintIdentifier = "C448320721B7B3F900FFD71C"
             BuildableName = "PromiseSupport.framework"
-            BlueprintName = "iOS Promise Support"
+            BlueprintName = "macOS Support Framework"
             ReferencedContainer = "container:Promise.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C44831F621B7AD6E00FFD71C"
+            BlueprintIdentifier = "C448320721B7B3F900FFD71C"
             BuildableName = "PromiseSupport.framework"
-            BlueprintName = "iOS Promise Support"
+            BlueprintName = "macOS Support Framework"
             ReferencedContainer = "container:Promise.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

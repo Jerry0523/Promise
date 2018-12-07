@@ -189,9 +189,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		C41CAA09217EC02E00F9D037 /* macOS Promise */ = {
+		C41CAA09217EC02E00F9D037 /* macOS Framework */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C41CAA11217EC02E00F9D037 /* Build configuration list for PBXNativeTarget "macOS Promise" */;
+			buildConfigurationList = C41CAA11217EC02E00F9D037 /* Build configuration list for PBXNativeTarget "macOS Framework" */;
 			buildPhases = (
 				C41CAA05217EC02E00F9D037 /* Headers */,
 				C41CAA06217EC02E00F9D037 /* Sources */,
@@ -202,14 +202,14 @@
 			);
 			dependencies = (
 			);
-			name = "macOS Promise";
+			name = "macOS Framework";
 			productName = PromiseMac;
 			productReference = C41CAA0A217EC02E00F9D037 /* Promise.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C44831F621B7AD6E00FFD71C /* iOS Promise Support */ = {
+		C44831F621B7AD6E00FFD71C /* iOS Support Framework */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C44831FC21B7AD6E00FFD71C /* Build configuration list for PBXNativeTarget "iOS Promise Support" */;
+			buildConfigurationList = C44831FC21B7AD6E00FFD71C /* Build configuration list for PBXNativeTarget "iOS Support Framework" */;
 			buildPhases = (
 				C44831F221B7AD6E00FFD71C /* Headers */,
 				C44831F321B7AD6E00FFD71C /* Sources */,
@@ -221,14 +221,14 @@
 			dependencies = (
 				C448320021B7AE3A00FFD71C /* PBXTargetDependency */,
 			);
-			name = "iOS Promise Support";
+			name = "iOS Support Framework";
 			productName = "iOS Promise-Support";
 			productReference = C44831F721B7AD6E00FFD71C /* PromiseSupport.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C448320721B7B3F900FFD71C /* macOS Promise Support */ = {
+		C448320721B7B3F900FFD71C /* macOS Support Framework */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C448320D21B7B3F900FFD71C /* Build configuration list for PBXNativeTarget "macOS Promise Support" */;
+			buildConfigurationList = C448320D21B7B3F900FFD71C /* Build configuration list for PBXNativeTarget "macOS Support Framework" */;
 			buildPhases = (
 				C448320321B7B3F900FFD71C /* Headers */,
 				C448320421B7B3F900FFD71C /* Sources */,
@@ -240,14 +240,14 @@
 			dependencies = (
 				C448321121B7B41700FFD71C /* PBXTargetDependency */,
 			);
-			name = "macOS Promise Support";
+			name = "macOS Support Framework";
 			productName = "macOS Promise Support";
 			productReference = C448320821B7B3F900FFD71C /* PromiseSupport.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C454321E2142709D002BF607 /* iOS Promise */ = {
+		C454321E2142709D002BF607 /* iOS Framework */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C45432332142709D002BF607 /* Build configuration list for PBXNativeTarget "iOS Promise" */;
+			buildConfigurationList = C45432332142709D002BF607 /* Build configuration list for PBXNativeTarget "iOS Framework" */;
 			buildPhases = (
 				C454321A2142709D002BF607 /* Sources */,
 				C454321B2142709D002BF607 /* Frameworks */,
@@ -258,7 +258,7 @@
 			);
 			dependencies = (
 			);
-			name = "iOS Promise";
+			name = "iOS Framework";
 			productName = Promise;
 			productReference = C454321F2142709D002BF607 /* Promise.framework */;
 			productType = "com.apple.product-type.framework";
@@ -301,10 +301,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C454321E2142709D002BF607 /* iOS Promise */,
-				C41CAA09217EC02E00F9D037 /* macOS Promise */,
-				C44831F621B7AD6E00FFD71C /* iOS Promise Support */,
-				C448320721B7B3F900FFD71C /* macOS Promise Support */,
+				C454321E2142709D002BF607 /* iOS Framework */,
+				C41CAA09217EC02E00F9D037 /* macOS Framework */,
+				C44831F621B7AD6E00FFD71C /* iOS Support Framework */,
+				C448320721B7B3F900FFD71C /* macOS Support Framework */,
 			);
 		};
 /* End PBXProject section */
@@ -390,12 +390,12 @@
 /* Begin PBXTargetDependency section */
 		C448320021B7AE3A00FFD71C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C454321E2142709D002BF607 /* iOS Promise */;
+			target = C454321E2142709D002BF607 /* iOS Framework */;
 			targetProxy = C44831FF21B7AE3A00FFD71C /* PBXContainerItemProxy */;
 		};
 		C448321121B7B41700FFD71C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C41CAA09217EC02E00F9D037 /* macOS Promise */;
+			target = C41CAA09217EC02E00F9D037 /* macOS Framework */;
 			targetProxy = C448321021B7B41700FFD71C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -748,7 +748,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C41CAA11217EC02E00F9D037 /* Build configuration list for PBXNativeTarget "macOS Promise" */ = {
+		C41CAA11217EC02E00F9D037 /* Build configuration list for PBXNativeTarget "macOS Framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C41CAA0F217EC02E00F9D037 /* Debug */,
@@ -757,7 +757,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C44831FC21B7AD6E00FFD71C /* Build configuration list for PBXNativeTarget "iOS Promise Support" */ = {
+		C44831FC21B7AD6E00FFD71C /* Build configuration list for PBXNativeTarget "iOS Support Framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C44831FD21B7AD6E00FFD71C /* Debug */,
@@ -766,7 +766,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C448320D21B7B3F900FFD71C /* Build configuration list for PBXNativeTarget "macOS Promise Support" */ = {
+		C448320D21B7B3F900FFD71C /* Build configuration list for PBXNativeTarget "macOS Support Framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C448320E21B7B3F900FFD71C /* Debug */,
@@ -784,7 +784,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C45432332142709D002BF607 /* Build configuration list for PBXNativeTarget "iOS Promise" */ = {
+		C45432332142709D002BF607 /* Build configuration list for PBXNativeTarget "iOS Framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C45432342142709D002BF607 /* Debug */,

@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C41CAA09217EC02E00F9D037"
                BuildableName = "Promise.framework"
-               BlueprintName = "macOS Promise"
+               BlueprintName = "macOS Framework"
                ReferencedContainer = "container:Promise.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,7 +47,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C41CAA09217EC02E00F9D037"
             BuildableName = "Promise.framework"
-            BlueprintName = "macOS Promise"
+            BlueprintName = "macOS Framework"
             ReferencedContainer = "container:Promise.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,7 +65,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C41CAA09217EC02E00F9D037"
             BuildableName = "Promise.framework"
-            BlueprintName = "macOS Promise"
+            BlueprintName = "macOS Framework"
             ReferencedContainer = "container:Promise.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
