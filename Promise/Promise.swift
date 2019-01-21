@@ -10,6 +10,8 @@ import Foundation
 
 public final class Promise<T> {
     
+    public typealias RejectHandler = (Error) -> ()
+    
     public static var defaultOperationQueue: DispatchQueue {
         get {
             return mDefaultOperationQueue
@@ -34,22 +36,22 @@ public final class Promise<T> {
     
     @discardableResult
     public func then<O>(_ onResolved: @escaping (T) throws -> O) -> Promise<O> {
-        return _then(onResolved, nil)
+        return _then(onResolved, nil, nil)
     }
     
     @discardableResult
-    public func then<O>(_ onResolved: @escaping (T) throws -> O, _ onRejected: @escaping RejectHandler) -> Promise<O> {
-        return _then(onResolved, onRejected)
+    public func then<O>(_ onResolved: @escaping (T) throws -> O, _ onRejected: RejectHandler?, _ onProgress: ProgressHandler?) -> Promise<O> {
+        return _then(onResolved, onRejected, onProgress)
     }
     
     @discardableResult
     public func then<O>(_ onResolved: @escaping (T) throws -> Promise<O>) -> Promise<O> {
-        return _then(onResolved, nil)
+        return _then(onResolved, nil, nil)
     }
     
     @discardableResult
-    public func then<O>(_ onResolved: @escaping (T) throws -> Promise<O>, _ onRejected: @escaping RejectHandler) -> Promise<O> {
-        return _then(onResolved, onRejected)
+    public func then<O>(_ onResolved: @escaping (T) throws -> Promise<O>, _ onRejected: RejectHandler?, _ onProgress: ProgressHandler?) -> Promise<O> {
+        return _then(onResolved, onRejected, onProgress)
     }
     
     @discardableResult
@@ -78,7 +80,9 @@ public final class Promise<T> {
     
     internal var fulfilledHandlers = [(T) -> ()]()
     
-    internal var rejectedHandlers = [RejectHandler]()
+    internal lazy var rejectedHandlers = [RejectHandler]()
+    
+    internal lazy var progressHandlers = [ProgressHandler]()
     
     internal var operationQueue: DispatchQueue?
     
@@ -141,31 +145,46 @@ extension Promise {
         }
     }
     
-    internal func makeConnections<M, O>(_ onResolved: @escaping (T) throws -> M, _ onRejected: RejectHandler?, next: Promise<O>) {
+    internal func makeConnections<M, O>(_ onResolved: @escaping (T) throws -> M, _ onRejected: RejectHandler?, _ onProgress: ProgressHandler?, next: Promise<O>) {
         
         ioQueue.async {
-            self.fulfilledHandlers.append { [unowned self] (val) in
+            self.fulfilledHandlers.append { [unowned self] val in
                 self.doResolve(onResolved, val: val, next: next)
             }
             
-            self.rejectedHandlers.append { [unowned self] (error) in
-                if let opQueue = self.operationQueue, next.operationQueue == nil {
-                    next.detach(opQueue)
+            if onRejected != nil {
+                self.rejectedHandlers.append { [unowned self] error in
+                    self.detachQueueIfNeeded(for: next)
+                    onRejected?(error)
+                    next.reject(error)
                 }
-                onRejected?(error)
-                next.reject(error)
+            }
+            
+            if onProgress != nil {
+                self.progressHandlers.append { [unowned self] progress in
+                    self.detachQueueIfNeeded(for: next)
+                    onProgress?(progress)
+                    next.progress(progress)
+                }
+                
             }
         }
     }
     
     @discardableResult
-    private func _then<O, R>(_ onResolved: @escaping (T) throws -> O, _ onRejected: RejectHandler?) -> Promise<R> {
+    private func _then<O, R>(_ onResolved: @escaping (T) throws -> O, _ onRejected: RejectHandler?, _ onProgress: ProgressHandler?) -> Promise<R> {
         let ret = Promise<R>()
-        makeConnections(onResolved, onRejected, next: ret)
+        makeConnections(onResolved, onRejected, onProgress, next: ret)
         defer {
             handleStateChange()
         }
         return ret
+    }
+    
+    private func detachQueueIfNeeded<M>(for next: Promise<M>) {
+        if let opQueue = operationQueue, next.operationQueue == nil {
+            next.detach(opQueue)
+        }
     }
     
     private func doResolve<M, O>(_ onResolved: @escaping (T) throws -> M, val: T, next: Promise<O>) {

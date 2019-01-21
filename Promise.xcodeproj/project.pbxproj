@@ -16,8 +16,6 @@
 		C448321C21B7B59700FFD71C /* SecSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448321621B7B59700FFD71C /* SecSupport.swift */; };
 		C448321F21B7B59700FFD71C /* URLSession+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448321921B7B59700FFD71C /* URLSession+Promise.swift */; };
 		C448322021B7B59700FFD71C /* URLSession+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448321921B7B59700FFD71C /* URLSession+Promise.swift */; };
-		C448322521B7F69400FFD71C /* Expressible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448322421B7F69400FFD71C /* Expressible.swift */; };
-		C448322621B7F69400FFD71C /* Expressible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448322421B7F69400FFD71C /* Expressible.swift */; };
 		C448322821B8C38300FFD71C /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448322721B8C38300FFD71C /* Box.swift */; };
 		C448322921B8C38300FFD71C /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448322721B8C38300FFD71C /* Box.swift */; };
 		C454323B214270C4002BF607 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4543239214270C4002BF607 /* Promise.swift */; };
@@ -49,7 +47,6 @@
 		C448320821B7B3F900FFD71C /* PromiseSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PromiseSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C448321621B7B59700FFD71C /* SecSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecSupport.swift; sourceTree = "<group>"; };
 		C448321921B7B59700FFD71C /* URLSession+Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+Promise.swift"; sourceTree = "<group>"; };
-		C448322421B7F69400FFD71C /* Expressible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expressible.swift; sourceTree = "<group>"; };
 		C448322721B8C38300FFD71C /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		C454321F2142709D002BF607 /* Promise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Promise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4543239214270C4002BF607 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
@@ -142,7 +139,6 @@
 				C4543239214270C4002BF607 /* Promise.swift */,
 				C454325321466559002BF607 /* Extensions.swift */,
 				C4FDEC29216E08BF00D0880B /* Operations.swift */,
-				C448322421B7F69400FFD71C /* Expressible.swift */,
 				C448322721B8C38300FFD71C /* Box.swift */,
 			);
 			path = Promise;
@@ -346,7 +342,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C41CAA13217EC5E400F9D037 /* Thenable.swift in Sources */,
-				C448322621B7F69400FFD71C /* Expressible.swift in Sources */,
 				C41CAA14217EC5E400F9D037 /* Promise.swift in Sources */,
 				C448322921B8C38300FFD71C /* Box.swift in Sources */,
 				C41CAA15217EC5E400F9D037 /* Extensions.swift in Sources */,
@@ -377,7 +372,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C454323B214270C4002BF607 /* Promise.swift in Sources */,
-				C448322521B7F69400FFD71C /* Expressible.swift in Sources */,
 				C454325421466559002BF607 /* Extensions.swift in Sources */,
 				C448322821B8C38300FFD71C /* Box.swift in Sources */,
 				C4153C372168FFEA006B48CC /* Thenable.swift in Sources */,
@@ -533,6 +527,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -562,6 +557,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jerry.macOS-Promise-Support";

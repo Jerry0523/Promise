@@ -6,8 +6,6 @@
 //  Copyright © 2018年 com.jerry. All rights reserved.
 //
 
-public typealias RejectHandler = (Error) -> ()
-
 public protocol AnyThenable {
     
     func resolve(_ value: Any)

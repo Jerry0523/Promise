@@ -29,7 +29,7 @@ extension Promise {
                         ret.reject(error)
                     }
                 }
-            })
+            }, nil)
         }
         return ret
     }
@@ -54,7 +54,7 @@ extension Promise {
                 ioQueue.async {
                     ret.reject(error)
                 }
-            })
+            }, nil)
         }
         return ret
     }

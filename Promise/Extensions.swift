@@ -28,20 +28,38 @@ extension Promise {
 
 extension Promise {
     
-    public func `catch`(_ onRejected: @escaping (Error) ->()) {
+    public typealias ProgressHandler = (Double) -> ()
+    
+    public func progress(_ val: Double) {
         ioQueue.async {
-            self.rejectedHandlers.append { (error) in
-                onRejected(error)
+            guard case .pending = self.state else {
+                return
             }
+            self.progressHandlers.forEach({ (progresser) in
+                (self.operationQueue ?? mDefaultOperationQueue).sync {
+                    progresser(val)
+                }
+            })
         }
-        handleStateChange()
+    }
+    
+}
+
+extension Promise {
+    
+    public func `catch`(_ onRejected: @escaping (Error) ->()) {
+        _ = _catch(onRejected, filter: { _ in true })
     }
     
     public func `catch`<E>(_ onRejected: @escaping (E) ->()) -> Self where E: Error {
+        return _catch({ onRejected($0 as! E) }, filter: { $0 is E })
+    }
+    
+    private func `_catch`(_ onRejected: @escaping (Error) ->(), filter: @escaping (Error) -> Bool ) -> Self {
         ioQueue.async {
             self.rejectedHandlers.append { (error) in
-                if let errVal = error as? E {
-                    onRejected(errVal)
+                if filter(error) {
+                    onRejected(error)
                 }
             }
         }
