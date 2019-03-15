@@ -94,7 +94,7 @@ public final class Promise<T> {
         
         case rejected(reason: Error)
         
-        var isPendding: Bool {
+        var isPending: Bool {
             if case .pending = self {
                 return true
             } else {
