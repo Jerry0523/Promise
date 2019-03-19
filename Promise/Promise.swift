@@ -152,21 +152,16 @@ extension Promise {
                 self.doResolve(onResolved, val: val, next: next)
             }
             
-            if onRejected != nil {
-                self.rejectedHandlers.append { [unowned self] error in
-                    self.detachQueueIfNeeded(for: next)
-                    onRejected?(error)
-                    next.reject(error)
-                }
+            self.rejectedHandlers.append { [unowned self] error in
+                self.detachQueueIfNeeded(for: next)
+                onRejected?(error)
+                next.reject(error)
             }
             
-            if onProgress != nil {
-                self.progressHandlers.append { [unowned self] progress in
-                    self.detachQueueIfNeeded(for: next)
-                    onProgress?(progress)
-                    next.progress(progress)
-                }
-                
+            self.progressHandlers.append { [unowned self] progress in
+                self.detachQueueIfNeeded(for: next)
+                onProgress?(progress)
+                next.progress(progress)
             }
         }
     }
